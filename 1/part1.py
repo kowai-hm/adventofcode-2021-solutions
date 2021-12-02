@@ -1,4 +1,4 @@
-last_measurement = -50000  # valeur sentinelle, puisque les mesures ont l'air d'être toutes positives
+last_measurement = -50000  # valeur arbitraire (les mesures ont l'air d'être toutes positives)
 larger_than_previous = -1  # la première valeur sera forcément plus haute
 
 with open("input.txt") as input:
