@@ -10,27 +10,28 @@ public class Part1 {
 		int horizontalPosition = 0;
 		int depth = 0;
 		
+		Scanner scanner;
 		try {
-			Scanner scanner = new Scanner(new File("input.txt"));
-			while (scanner.hasNextLine()) {
-				String instruction = scanner.nextLine();
-				String[] tokens = instruction.split(" "); // instruction valeur
-				int value = Integer.parseInt(tokens[1]);
-				switch(tokens[0]) {
-					case "forward":
-						horizontalPosition += value;
-						break;
-					case "down":
-						depth += value;
-						break;
-					default: // up
-						depth -= value;
-				}
-			}
-			scanner.close();
+			scanner = new Scanner(new File("input.txt"));
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			return;
 		}
+		while (scanner.hasNextLine()) {
+			String instruction = scanner.nextLine();
+			String[] tokens = instruction.split(" "); // instruction valeur
+			int value = Integer.parseInt(tokens[1]);
+			switch(tokens[0]) {
+				case "forward":
+					horizontalPosition += value;
+					break;
+				case "down":
+					depth += value;
+					break;
+				default: // up
+					depth -= value;
+			}
+		}
+		scanner.close();
 		
 		System.out.println("Position horizontale finale : " + horizontalPosition);
 		System.out.println("Niveau de profondeur final : " + depth);
