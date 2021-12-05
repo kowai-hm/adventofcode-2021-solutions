@@ -80,7 +80,7 @@ int main()
 	int* random_numbers = NULL;
 	int random_numbers_size = 0;
 	
-    fgets(line, sizeof(line), file);
+	fgets(line, sizeof(line), file);
 	token = strtok(line, ",");
 	while(token) 
 	{

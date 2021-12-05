@@ -80,7 +80,7 @@ int main()
 	int* random_numbers = NULL;
 	int random_numbers_size = 0;
 	
-    fgets(line, sizeof(line), file);
+	fgets(line, sizeof(line), file);
 	token = strtok(line, ",");
 	while(token) 
 	{
@@ -143,4 +143,9 @@ int main()
 		}
 	}
 	printf("Score du dernier plateau gagnant = %i\n", final_score(last_winning_board, last_number));
+	
+	fclose(file);
+	free(random_numbers);
+	free(boards);
+	return 0;
 }
