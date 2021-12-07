@@ -121,6 +121,7 @@ int main()
 	}
 	boards = realloc(boards, ++boards_size * sizeof *boards);
 	boards[boards_size-1] = board;
+	fclose(file);
 	
 	//Détermination du gagnant
 	for(int i = 0; i < random_numbers_size; i++)
@@ -132,7 +133,6 @@ int main()
 			if(has_board_winned(boards[j]))
 			{
 				printf("Score du plateau gagnant = %i\n", final_score(boards[j], random_number));
-				fclose(file);
 				free(random_numbers);
 				free(boards);
 				return 0;

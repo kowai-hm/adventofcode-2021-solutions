@@ -38,13 +38,13 @@ foreach($line_segments as $line_segment) {
 	$y_increment = $first_end->y < $second_end->y;
 
 	$temp = $line_segment[0];
-	$crossed = true;
-	while($crossed) {
+	$crossed = false;
+	while(!$crossed) {
 		$y = $temp->y;
 		$x = $temp->x;
 		$diagram[$y][$x] = isset($diagram[$y][$x]) ? $diagram[$y][$x]+1 : 1;
 		if($temp == $second_end) {
-			$crossed = false;
+			$crossed = true;
 		}
 		if(!$x_equals) {
 			$temp->x = $x_increment ? $temp->x+1 : $temp->x-1;

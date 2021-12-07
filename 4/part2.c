@@ -121,6 +121,7 @@ int main()
 	}
 	boards = realloc(boards, ++boards_size * sizeof *boards);
 	boards[boards_size-1] = board;
+	fclose(file);
 	
 	//Détermination du dernier board gagnant
 	int** last_winning_board = NULL;
@@ -144,7 +145,6 @@ int main()
 	}
 	printf("Score du dernier plateau gagnant = %i\n", final_score(last_winning_board, last_number));
 	
-	fclose(file);
 	free(random_numbers);
 	free(boards);
 	return 0;
