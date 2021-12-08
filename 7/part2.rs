@@ -3,7 +3,7 @@ use std::io::{self, prelude::*, BufReader};
 
 fn main() -> io::Result<()> {
 	// Récupération des valeurs depuis l'input
-    let file = File::open("input.txt")?;
+	let file = File::open("input.txt")?;
 	let lines: Vec<_> = BufReader::new(file).lines().collect::<Result<_, _>>().unwrap();
 	let crab_positions: Vec<i32> = lines.first().unwrap().split(",").map(|x| x.parse::<i32>().unwrap()).collect();
 	
@@ -19,5 +19,5 @@ fn main() -> io::Result<()> {
 	
 	println!("Consommation minimale possible = {}", needed_fuel);
 
-    Ok(())
+	Ok(())
 }
