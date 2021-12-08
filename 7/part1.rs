@@ -5,24 +5,19 @@ fn main() -> io::Result<()> {
 	// Récupération des valeurs depuis l'input
     let file = File::open("input.txt")?;
 	let lines: Vec<_> = BufReader::new(file).lines().collect::<Result<_, _>>().unwrap();
-	let crab_positions: Vec<i32> = lines.first().unwrap().split(",").map(|x| x.parse::<i32>().unwrap()).collect();
+	let mut crab_positions: Vec<i32> = lines.first().unwrap().split(",").map(|x| x.parse::<i32>().unwrap()).collect();
 	
-	// Recherche par bruteforce
-	let minimum = *crab_positions.iter().min().unwrap();
-	let maximum = *crab_positions.iter().max().unwrap();
+	// La valeur médiane est la position pour laquelle la consommation est minimale
+	crab_positions.sort();
+	let median = crab_positions[crab_positions.len()/2];
 	
-	let mut cheapest_fuel = i32::MAX;
-	for possible_position in minimum..=maximum {
-		let mut needed_fuel: i32 = 0;
-		for crab_position in &crab_positions {
-			needed_fuel += (crab_position-possible_position).abs();
-		}
-		if needed_fuel < cheapest_fuel {
-			cheapest_fuel = needed_fuel;
-		}
+	// Calcul de la consommation nécessaire
+	let mut needed_fuel: i32 = 0;
+	for crab_position in &crab_positions {
+		needed_fuel += (crab_position-median).abs();
 	}
 	
-	println!("Consommation minimale possible = {}", cheapest_fuel);
+	println!("Consommation minimale possible = {}", needed_fuel);
 
     Ok(())
 }
