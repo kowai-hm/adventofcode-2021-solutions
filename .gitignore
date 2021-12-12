@@ -1,5 +1,6 @@
 **/*.exe
 **/*.pdb
+**/*.jar
 **/test.txt
 *.png
 *.svg
